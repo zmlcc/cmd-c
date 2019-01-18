@@ -16,12 +16,12 @@ TAILQ_HEAD(command_list, command);
 
 struct command
 {
-    TAILQ_ENTRY(command) node;
     char *name;
     char *help;
     command_handle_t handle;
     struct command *parent;
     struct command_list* subcommand;
+    TAILQ_ENTRY(command) node;
 };
 
 static inline int command_init(struct command *cmd)
