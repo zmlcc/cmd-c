@@ -1,4 +1,4 @@
-
+#include <stdarg.h>
 #include "ob.h"
 
 int ob_nprintf(ob *buf, const char *fmt, ...)
@@ -10,7 +10,7 @@ int ob_nprintf(ob *buf, const char *fmt, ...)
     }
     va_list ap;
     va_start(ap, fmt);
-    int n = vsnprintf(buf + buf->used_size, unused_size, fmt, ap);
+    int n = vsnprintf(buf->buffer + buf->used_size, unused_size, fmt, ap);
     va_end(ap);
     buf->used_size += n;
     return n;
